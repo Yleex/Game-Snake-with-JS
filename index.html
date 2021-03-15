@@ -35,22 +35,52 @@ class Game{
 // Inicializador del juego
   Init(){
     this.PrintState("Inicia");
+
+    let square= new Objeto();
+    squere.X=15;
+    squere.Y=15;
+    this.Snake.push(square);
+
+    this.director= setInterval(()=>{
+      this.Next();
+      this.Show();
+    },300)
   }
 
   Next(){
-
+    this.PrintState("Mueve: "+ this.direction);
+    switch (this.direction) {
+      case 1:
+        this.Snake[0].Y--;
+      break;
+      case 2:
+        this.Snake[0].X++;
+      break;
+      case 1:
+        this.Snake[0].Y++;
+      break;
+      case 1:
+        this.Snake[0].X--;
+      break;
+    }
   }
 
   Show(){
+    this.ctx.clearReact(0,0,this.canvas.width, this.canvas.height);
+
+    this.Snake.map(function(square){
+      this.ctx.fillStyle="black";
+      this.ctx.fillReact(square.X * this.sizeSquare, square.Y * this.sizeSquare, this.sizeSquare, this.sizeSquare);
+    })
 
   }
 
   PrintState(text){
-    this.txtState=text;
+    this.txtState.value=text;
   }
 
   PrintKey(text){
-    this.txtButton=text;
+    this.txtButton.value=text;
   }
 
 
